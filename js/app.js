@@ -2,7 +2,7 @@ const container = document.querySelector(".container");
 const resultado = document.querySelector("#resultado");
 const formulario = document.querySelector("#formulario");
 
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   formulario.addEventListener("submit", buscarClima);
 });
 
