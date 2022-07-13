@@ -11,6 +11,16 @@ const obtenerLocalizacion = () => {
   localizacion.getCurrentPosition(posicion, error);
 };
 
+const posicion = (position) => {
+  const { latitude, longitude } = position.coords;
+  mostrarDatos(latitude, longitude);
+};
+
+const error = () => {
+  sacarLoad();
+  mostrarError("No se puede mostrar los datos.", contenedor);
+};
+
 function buscarClima(e) {
   e.preventDefault();
 
