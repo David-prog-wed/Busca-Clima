@@ -6,6 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
   formulario.addEventListener("submit", buscarClima);
 });
 
+const obtenerLocalizacion = () => {
+  const localizacion = navigator.geolocation;
+  localizacion.getCurrentPosition(posicion, error);
+};
+
 function buscarClima(e) {
   e.preventDefault();
 
