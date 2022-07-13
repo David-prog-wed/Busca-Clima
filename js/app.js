@@ -62,7 +62,7 @@ function consultarAPI(ciudad, pais) {
   const appId = "31b33df22fe2b492d9b74843003438fe";
   let url = `http://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`;
 
-  Spinner(); // Muestra un spinner de carga
+  //   Spinner(); // Muestra un spinner de carga
 
   fetch(url)
     .then((respuesta) => respuesta.json())
@@ -81,7 +81,7 @@ function consultarAPI(ciudad, pais) {
 function mostrarClima(datos) {
   const {
     name,
-    main: { temp, fecha, temp_max, temp_min },
+    main: { temp, temp_max, temp_min },
   } = datos;
 
   const centigrados = Math.round(temp - 273.15);
