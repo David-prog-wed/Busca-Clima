@@ -6,21 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   formulario.addEventListener("submit", buscarClima);
 });
 
-const obtenerLocalizacion = () => {
-  const localizacion = navigator.geolocation;
-  localizacion.getCurrentPosition(posicion, error);
-};
-
-const posicion = (position) => {
-  const { latitude, longitude } = position.coords;
-  mostrarDatos(latitude, longitude);
-};
-
-const error = () => {
-  sacarLoad();
-  mostrarError("No se puede mostrar los datos.", contenedor);
-};
-
 function buscarClima(e) {
   e.preventDefault();
 
@@ -82,6 +67,7 @@ function consultarAPI(ciudad, pais) {
   fetch(url)
     .then((respuesta) => respuesta.json())
     .then((datos) => {
+      console.log(datos);
       limpiarHTML(); // Limpiar el HTML previo
       if (datos.cod === "404") {
         mostrarError("Ciudad no encontrada");
@@ -95,7 +81,7 @@ function consultarAPI(ciudad, pais) {
 function mostrarClima(datos) {
   const {
     name,
-    main: { temp, temp_max, temp_min },
+    main: { temp, fecha, temp_max, temp_min },
   } = datos;
 
   const centigrados = Math.round(temp - 273.15);
